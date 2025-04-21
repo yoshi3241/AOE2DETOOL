@@ -1,9 +1,6 @@
 ﻿using AOE2DETOOL.Models.Data;
 using OpenAI.GPT3;
 using OpenAI.GPT3.Managers;
-using OpenAI.GPT3.ObjectModels.RequestModels;
-using OpenAI.GPT3.ObjectModels.ResponseModels;
-using OpenAI.GPT3.ObjectModels.SharedModels;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Timers;
@@ -17,6 +14,8 @@ namespace AOE2DETOOL.Models.Logic
 {
     public class AOE2DEDataProcess
     {
+        const string TAG_POSION_NO_DATA = "none";
+
         public static readonly object BuildInfoDataLock = new object();
         public static readonly object MoveInfoDataLock = new object();
         public static readonly object TechInfoDataLock = new object();
@@ -466,7 +465,7 @@ namespace AOE2DETOOL.Models.Logic
             var psInfo = new ProcessStartInfo
             {
                 FileName = Constants.PYTHON_CMD_NAME,
-                Arguments = @$"""{Constants.PYTHON_GET_DATA_PROC}"" ""{replayFilePath}"" ""{Constants.PYTHON_OUTPUT_DATAPATH}""",
+                Arguments = @$"""{Environment.GetEnvironmentVariable(Constants.KEY_ENV_PYTHON_GET_DATA_PROC)!}"" ""{replayFilePath}"" ""{Constants.PYTHON_OUTPUT_DATAPATH}""",
                 CreateNoWindow = true,                 // コンソール・ウィンドウを開かない
                 UseShellExecute = false,               // シェル機能を使用しない
                 RedirectStandardOutput = true,         // 標準出力をリダイレクト
@@ -936,6 +935,8 @@ namespace AOE2DETOOL.Models.Logic
                 return;
             }
 
+            var isTeamsError = false;
+
             var command = "";
             switch (dataList[0])
             {
@@ -989,14 +990,31 @@ namespace AOE2DETOOL.Models.Logic
                     break;
 
                 case "TEAMS":
+
+                    var posionX = 0f;
+                    var posionY = 0f;
+                    if (dataList[7] == TAG_POSION_NO_DATA || dataList[8] == TAG_POSION_NO_DATA)
+                    {
+                        if (!isTeamsError)
+                        {
+                            isTeamsError = true;
+                            Speech.Talk($"チーム拠点位置の解析エラーです。無視します").Forget();
+                        }
+                    }
+                    else
+                    {
+                        posionX = float.Parse(dataList[7]);
+                        posionY = float.Parse(dataList[8]);
+                    }
+
                     number = int.Parse(dataList[1]) - 1;
                     _playerInfoList[number].TeamId = int.Parse(dataList[2]);
                     _playerInfoList[number].PlayerId = int.Parse(dataList[3]) + 1;
                     _playerInfoList[number].ColorName = dataList[4];
                     _playerInfoList[number].CivilizationId = int.Parse(dataList[5]);
                     _playerInfoList[number].CivilizationName = dataList[6];
-                    _playerInfoList[number].Posion.X = float.Parse(dataList[7]);
-                    _playerInfoList[number].Posion.Y = float.Parse(dataList[8]);
+                    _playerInfoList[number].Posion.X = posionX;
+                    _playerInfoList[number].Posion.Y = posionY;
                     _playerInfoList[number].PlayerName = System.Text.RegularExpressions.Regex.Unescape(dataList[9]);
 
                     if(_playerInfoList[number].PlayerName == _myselfName)

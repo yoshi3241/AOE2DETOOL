@@ -53,7 +53,7 @@ namespace AOE2DETOOL.Utilities
 
             await TalkProc(_talkList[0]);
 
-            if(_talkList.Count > 1)
+            if(_talkList.Count > 0)
             {
                 _talkList.RemoveAt(0);
             }

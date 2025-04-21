@@ -39,7 +39,7 @@ namespace AOE2DETOOL
         private void Form1_Load(object sender, EventArgs e)
         {
             // ÉrÉÖÅ[èâä˙âªä÷òA
-            InitView(Constants.REPLAY_DIR);
+            InitView(Environment.GetEnvironmentVariable(Constants.KEY_ENV_REPLAY_DIR)!);
 
             _overlayForm = new Aoe2deOverlayForm();
             _overlayForm.InitData(this, _aOE2DEDataProcess);
@@ -90,7 +90,7 @@ namespace AOE2DETOOL
 
         public void FileListUpdate()
         {
-            InitView(Constants.REPLAY_DIR);
+            InitView(Environment.GetEnvironmentVariable(Constants.KEY_ENV_REPLAY_DIR)!);
         }
 
         /// <summary>
@@ -213,11 +213,11 @@ namespace AOE2DETOOL
 
         public void DoPlay()
         {
-            var replayFilePath = GetSelectedFile(Constants.REPLAY_DIR);
+            var replayFilePath = GetSelectedFile(Environment.GetEnvironmentVariable(Constants.KEY_ENV_REPLAY_DIR)!);
             textBox1.Text = "";
             textGameTime.Text = "";
 
-            InitPlayerInfoView(Constants.REPLAY_DIR);
+            InitPlayerInfoView(Environment.GetEnvironmentVariable(Constants.KEY_ENV_REPLAY_DIR)!);
 
             _aOE2DEDataProcess.DoPlay(replayFilePath, textMyselfName.Text);
 
@@ -480,7 +480,7 @@ namespace AOE2DETOOL
 
         private void button2_Click(object sender, EventArgs e)
         {
-            InitView(Constants.REPLAY_DIR);
+            InitView(Environment.GetEnvironmentVariable(Constants.KEY_ENV_REPLAY_DIR)!);
         }
     }
 }

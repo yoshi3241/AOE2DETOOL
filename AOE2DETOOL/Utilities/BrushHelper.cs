@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace AOE2DETOOL.Utilities
+﻿namespace AOE2DETOOL.Utilities
 {
     public static class BrushHelper
     {
