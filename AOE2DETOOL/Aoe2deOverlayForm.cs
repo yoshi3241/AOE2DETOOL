@@ -219,7 +219,7 @@ namespace AOE2DETOOL
         {
             lock (AOE2DEDataProcess.MoveInfoDataLock)
             {
-                if (_aOE2DEDataProcess is null || _aOE2DEDataProcess.BildInfoList.Count == 0)
+                if (_aOE2DEDataProcess is null || _aOE2DEDataProcess.MoveInfoList.Count == 0)
                 {
                     return;
                 }

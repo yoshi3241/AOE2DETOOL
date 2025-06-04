@@ -11,15 +11,15 @@ namespace AOE2DETOOL
 {
     public partial class Form1 : Form
     {
-        private List<UserControl1> uc1 = new List<UserControl1>();          // ƒvƒŒƒCƒ„[Ú×î•ñ”z—ñ
-        private List<FileInfo> _fileList = new List<FileInfo>();            // •\¦ƒtƒ@ƒCƒ‹ˆê——
+        private List<UserControl1> uc1 = new List<UserControl1>();          // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼è©³ç´°æƒ…å ±é…åˆ—
+        private List<FileInfo> _fileList = new List<FileInfo>();            // è¡¨ç¤ºãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§
         private AOE2DEDataProcess _aOE2DEDataProcess = new AOE2DEDataProcess();
 
         public Form1()
         {
             InitializeComponent();
 
-            // ƒ†[ƒU[Ú×î•ñ”z—ñƒZƒbƒg
+            // ãƒ¦ãƒ¼ã‚¶ãƒ¼è©³ç´°æƒ…å ±é…åˆ—ã‚»ãƒƒãƒˆ
             uc1.Add(this.userControl11);
             uc1.Add(this.userControl12);
             uc1.Add(this.userControl13);
@@ -29,7 +29,7 @@ namespace AOE2DETOOL
             uc1.Add(this.userControl17);
             uc1.Add(this.userControl18);
 
-            // ExitƒCƒxƒ“ƒgƒnƒ“ƒhƒ‰‚ğ’Ç‰Á
+            // Exitã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ³ãƒ‰ãƒ©ã‚’è¿½åŠ 
             Application.ApplicationExit += new EventHandler(ApplicationExitEvent);
         }
 
@@ -38,7 +38,7 @@ namespace AOE2DETOOL
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // ƒrƒ…[‰Šú‰»ŠÖ˜A
+            // ãƒ“ãƒ¥ãƒ¼åˆæœŸåŒ–é–¢é€£
             InitView(Environment.GetEnvironmentVariable(Constants.KEY_ENV_REPLAY_DIR)!);
 
             _overlayForm = new Aoe2deOverlayForm();
@@ -51,7 +51,7 @@ namespace AOE2DETOOL
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ˆê——•\¦
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§è¡¨ç¤º
         /// </summary>
         /// <param name="dir"></param>
         /// <exception cref="DirectoryNotFoundException"></exception>
@@ -74,17 +74,17 @@ namespace AOE2DETOOL
         }
 
         /// <summary>
-        /// ƒrƒ…[‰Šú‰»
+        /// ãƒ“ãƒ¥ãƒ¼åˆæœŸåŒ–
         /// </summary>
         /// <param name="dir"></param>
         private void InitView(string dir)
         {
             textGameTime.Text = "";
 
-            // ƒtƒ@ƒCƒ‹ˆê——‰Šú‰»
+            // ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§åˆæœŸåŒ–
             InitFileListView(dir);
 
-            // ƒ†[ƒU[î•ñ‰Šú‰»
+            // ãƒ¦ãƒ¼ã‚¶ãƒ¼æƒ…å ±åˆæœŸåŒ–
             InitPlayerInfoView(dir);
         }
 
@@ -94,38 +94,38 @@ namespace AOE2DETOOL
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ˆê——‰Šú‰»
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§åˆæœŸåŒ–
         /// </summary>
         /// <param name="dir"></param>
         private void InitFileListView(string dir)
         {
-            // ƒtƒ@ƒCƒ‹ˆê——‰Šú‰»
+            // ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§åˆæœŸåŒ–
             FileListInit(dir);
         }
 
         /// <summary>
-        /// ƒ†[ƒU[î•ñ‰Šú‰»
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼æƒ…å ±åˆæœŸåŒ–
         /// </summary>
         /// <param name="dir"></param>
         private void InitPlayerInfoView(string dir)
         {
-            // ƒ†[ƒU[î•ñ‰Šú‰»
+            // ãƒ¦ãƒ¼ã‚¶ãƒ¼æƒ…å ±åˆæœŸåŒ–
             for (int index = 0; index < 8; index++)
             {
                 uc1[index].groupBox1.Text = "";
 
                 uc1[index].textColor.BackColor = Color.White;
 
-                // ”_–¯ƒo[
+                // è¾²æ°‘ãƒãƒ¼
                 uc1[index].progressBar1.Value = 0;
-                // ‰×”nÔƒo[
+                // è·é¦¬è»Šãƒãƒ¼
                 uc1[index].progressBar2.Value = 0;
-                // ‹™‘Dƒo[
+                // æ¼èˆ¹ãƒãƒ¼
                 uc1[index].progressBar3.Value = 0;
 
-                uc1[index].textPop.Text = "0";              // ”_–¯
-                uc1[index].textWagon.Text = "0";            // ‰×”nÔ
-                uc1[index].textfFshing.Text = "0";          // ‹™‘D
+                uc1[index].textPop.Text = "0";              // è¾²æ°‘
+                uc1[index].textWagon.Text = "0";            // è·é¦¬è»Š
+                uc1[index].textfFshing.Text = "0";          // æ¼èˆ¹
 
 
                 uc1[index].textBowType.Text = "0";               // 
@@ -143,7 +143,7 @@ namespace AOE2DETOOL
         }
 
         /// <summary>
-        /// ApplicationExitƒCƒxƒ“ƒgƒnƒ“ƒhƒ‰
+        /// ApplicationExitã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ³ãƒ‰ãƒ©
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -151,14 +151,14 @@ namespace AOE2DETOOL
         {
             _aOE2DEDataProcess.PythonProssKill();
             
-            //ApplicationExitƒCƒxƒ“ƒgƒnƒ“ƒhƒ‰‚ğíœ
+            //ApplicationExitã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ³ãƒ‰ãƒ©ã‚’å‰Šé™¤
             Application.ApplicationExit -= new EventHandler(ApplicationExitEvent);
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒfƒBƒŒƒNƒgƒŠ‚Ì’†‚©‚çXV‚ªˆê”ÔV‚µ‚¢ƒtƒ@ƒCƒ‹‚ğæ“¾
+        /// æŒ‡å®šã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä¸­ã‹ã‚‰æ›´æ–°æ™‚åˆ»ãŒä¸€ç•ªæ–°ã—ã„ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—
         /// </summary>
-        /// <param name="dir">‘ÎÛƒfƒBƒŒƒNƒgƒŠ</param>
+        /// <param name="dir">å¯¾è±¡ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª</param>
         /// <param name="compare"></param>
         /// <returns></returns>
         /// <exception cref="DirectoryNotFoundException"></exception>
@@ -186,11 +186,11 @@ namespace AOE2DETOOL
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒfƒBƒŒƒNƒgƒŠ‚Ì’†‚©‚çXV‚ªˆê”ÔV‚µ‚¢ƒtƒ@ƒCƒ‹‚ğæ“¾
+        /// æŒ‡å®šã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä¸­ã‹ã‚‰æ›´æ–°æ™‚åˆ»ãŒä¸€ç•ªæ–°ã—ã„ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—
         /// </summary>
         /// <returns>
-        /// ÅV‚Ìƒtƒ@ƒCƒ‹ƒpƒXB
-        /// ‚½‚¾‚µƒfƒBƒŒƒNƒgƒŠ‚Éƒtƒ@ƒCƒ‹‚ª1‚Â‚à–³‚¯‚ê‚Î‹ó•¶š
+        /// æœ€æ–°ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã€‚
+        /// ãŸã ã—ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ãƒ•ã‚¡ã‚¤ãƒ«ãŒ1ã¤ã‚‚ç„¡ã‘ã‚Œã°ç©ºæ–‡å­—
         /// </returns>
         public string GetLatestFile(string dir)
         {
@@ -229,7 +229,7 @@ namespace AOE2DETOOL
         {
             lock (AOE2DEDataProcess.TechInfoDataLock)
             {
-                if (_aOE2DEDataProcess is null || _aOE2DEDataProcess.BildInfoList.Count == 0)
+                if (_aOE2DEDataProcess is null || _aOE2DEDataProcess.TechInfoList.Count == 0)
                 {
                     return;
                 }
@@ -249,7 +249,7 @@ namespace AOE2DETOOL
 
                 foreach (var techInfo in techInfos)
                 {
-                    // ŠJ”­‚É‚©‚©‚é•b”
+                    // é–‹ç™ºã«ã‹ã‹ã‚‹ç§’æ•°
                     var techTime = 0;
 
                     techInfo.IsUnprocessed = true;
@@ -260,15 +260,15 @@ namespace AOE2DETOOL
 
                     switch (techInfo.TechnologyId)
                     {
-                        case 8:            // Œ©’£‚è
+                        case 8:            // è¦‹å¼µã‚Š
                             break;
-                        case 22:            // ‹@D‚è
+                        case 22:            // æ©Ÿç¹”ã‚Š
                             break;
-                        case 101:            // —Ìå
+                        case 101:            // é ˜ä¸»
                             break;
-                        case 102:            // éå
+                        case 102:            // åŸä¸»
                             break;
-                        case 103:            // ’é‰¤
+                        case 103:            // å¸ç‹
                             if (myselfPlayerInfo.TeamId != targetPlayerInfo.TeamId)
                             {
                                 if (!targetPlayerInfo.AlertEmperorAttack)
@@ -278,21 +278,21 @@ namespace AOE2DETOOL
 
                                     if (targetPlayerInfo.CivilizationName == Civilization.Turks && techInfo.Sequence < (60000 * 25))
                                     {
-                                        Speech.Talk($"{speakColor}‚ª‘¦’é‰¤‚ğs‚¢‚Ü‚µ‚½").Forget();
+                                        Speech.Talk($"{speakColor}ãŒå³æ™‚å¸ç‹ã‚’è¡Œã„ã¾ã—ãŸ").Forget();
                                     }
                                     else if (techInfo.Sequence < (60000 * 31))
                                     {
-                                        Speech.Talk($"{speakColor}‚ª’é‰¤‚ÉˆÚs‚µ‚Ü‚µ‚½").Forget();
+                                        Speech.Talk($"{speakColor}ãŒå¸ç‹ã«ç§»è¡Œã—ã¾ã—ãŸ").Forget();
                                     }
                                 }
                             }
 
                             break;
-                        case 213:            // è‰Ÿ‚µÔ
+                        case 213:            // æ‰‹æŠ¼ã—è»Š
                             break;
-                        case 249:            // ‰×Ô
+                        case 249:            // è·è»Š
                             break;
-                        case 280:            // „‰ñ
+                        case 280:            // å·¡å›
                             break;
                     }
                 }
@@ -300,7 +300,7 @@ namespace AOE2DETOOL
         }
 
         /// <summary>
-        /// ‰æ–ÊXV—pƒ^ƒCƒ}[iƒXƒŒƒbƒhƒZ[ƒt‚Ì‚½‚ßƒ^ƒCƒ}[‚Åˆ—j
+        /// ç”»é¢æ›´æ–°ç”¨ã‚¿ã‚¤ãƒãƒ¼ï¼ˆã‚¹ãƒ¬ãƒƒãƒ‰ã‚»ãƒ¼ãƒ•ã®ãŸã‚ã‚¿ã‚¤ãƒãƒ¼ã§å‡¦ç†ï¼‰
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -318,7 +318,7 @@ namespace AOE2DETOOL
 
             textGameTime.Text = _aOE2DEDataProcess.GetGameTimeStr();
 
-            // ƒR[ƒ‹ƒoƒbƒN‚Å‚Ì‘‚«‘ã‚í‚è•sˆê’v‚ğ–h‚®‚½‚ßƒRƒs[
+            // ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã§ã®æ›¸ãä»£ã‚ã‚Šä¸ä¸€è‡´ã‚’é˜²ããŸã‚ã‚³ãƒ”ãƒ¼
             var playerInfoList = _aOE2DEDataProcess.PlayerInfoList.ToArray();
 
             var myselfInfoList = playerInfoList.Where((a) => a.IsMyself).FirstOrDefault();
@@ -336,27 +336,27 @@ namespace AOE2DETOOL
                         uc1[index].groupBox1.Text = nameText;
                     }
 
-                    sb.Append($"”Ô†:{item.Number} ");
-                    sb.Append($"ƒ`[ƒ€:{item.TeamId} ");
-                    sb.Append($"–¼‘O:{item.PlayerName} {(item.IsFrontline ? "(‘O)" : "(Œã)")}");
-                    sb.Append($"F:{item.ColorName} ");
-                    sb.Append($"•¶–¾:{item.CivilizationName} ");
+                    sb.Append($"ç•ªå·:{item.Number} ");
+                    sb.Append($"ãƒãƒ¼ãƒ :{item.TeamId} ");
+                    sb.Append($"åå‰:{item.PlayerName} {(item.IsFrontline ? "(å‰)" : "(å¾Œ)")}");
+                    sb.Append($"è‰²:{item.ColorName} ");
+                    sb.Append($"æ–‡æ˜:{item.CivilizationName} ");
                     sb.Append("\r\n");
 
                     var iut = item.UnitInfoList.UnitGroupTypeCount;
 
-                    sb.Append($"”_Œn:{iut.GetOrDefault(UnitGroupType.PopType)} ");
-                    sb.Append($"‹|Œn:{iut.GetOrDefault(UnitGroupType.BowType)} ");
-                    sb.Append($"UŒn:{iut.GetOrDefault(UnitGroupType.SkirmisherType)} ");
-                    sb.Append($"‘„Œn:{iut.GetOrDefault(UnitGroupType.SpearType)} ");
-                    sb.Append($"íŒn:{iut.GetOrDefault(UnitGroupType.WarriorType)} ");
-                    sb.Append($"‹RŒn:{iut.GetOrDefault(UnitGroupType.HorseType)} ");
-                    sb.Append($"ƒ]Œn:{iut.GetOrDefault(UnitGroupType.ElephantType)} ");
-                    sb.Append($"‚çŒn:{iut.GetOrDefault(UnitGroupType.CamelType)} ");
-                    sb.Append($"UŒn:{iut.GetOrDefault(UnitGroupType.SiegeType)} ");
-                    sb.Append($"ƒnŒn:{iut.GetOrDefault(UnitGroupType.HaskarlType)} ");
-                    sb.Append($"¹Œn:{iut.GetOrDefault(UnitGroupType.ClergymanType)} ");
-                    sb.Append($"ƒXŒn:{iut.GetOrDefault(UnitGroupType.ScorpionType)} ");
+                    sb.Append($"è¾²ç³»:{iut.GetOrDefault(UnitGroupType.PopType)} ");
+                    sb.Append($"å¼“ç³»:{iut.GetOrDefault(UnitGroupType.BowType)} ");
+                    sb.Append($"æ•£ç³»:{iut.GetOrDefault(UnitGroupType.SkirmisherType)} ");
+                    sb.Append($"æ§ç³»:{iut.GetOrDefault(UnitGroupType.SpearType)} ");
+                    sb.Append($"æˆ¦ç³»:{iut.GetOrDefault(UnitGroupType.WarriorType)} ");
+                    sb.Append($"é¨ç³»:{iut.GetOrDefault(UnitGroupType.HorseType)} ");
+                    sb.Append($"ã‚¾ç³»:{iut.GetOrDefault(UnitGroupType.ElephantType)} ");
+                    sb.Append($"ã‚‰ç³»:{iut.GetOrDefault(UnitGroupType.CamelType)} ");
+                    sb.Append($"æ”»ç³»:{iut.GetOrDefault(UnitGroupType.SiegeType)} ");
+                    sb.Append($"ãƒç³»:{iut.GetOrDefault(UnitGroupType.HaskarlType)} ");
+                    sb.Append($"è–ç³»:{iut.GetOrDefault(UnitGroupType.ClergymanType)} ");
+                    sb.Append($"ã‚¹ç³»:{iut.GetOrDefault(UnitGroupType.ScorpionType)} ");
                     sb.Append("\r\n");
                     sb.Append("\r\n");
 
@@ -378,32 +378,32 @@ namespace AOE2DETOOL
                     {
                         if (_aOE2DEDataProcess.GameTime < (60000 * 18))
                         {
-                            // éåƒ‰ƒbƒVƒ…
+                            // åŸä¸»ãƒ©ãƒƒã‚·ãƒ¥
                             var type = "";
-                            if (iut.GetOrDefault(UnitGroupType.WarriorType) > 2) type = "ím";
-                            if (iut.GetOrDefault(UnitGroupType.BowType) > 2) type = "‹|";
-                            if (iut.GetOrDefault(UnitGroupType.HorseType) > 2) type = "”n";
+                            if (iut.GetOrDefault(UnitGroupType.WarriorType) > 2) type = "æˆ¦å£«";
+                            if (iut.GetOrDefault(UnitGroupType.BowType) > 2) type = "å¼“";
+                            if (iut.GetOrDefault(UnitGroupType.HorseType) > 2) type = "é¦¬";
 
                             if (type != "")
                             {
                                 item.AlertRush = true;
                                 var speakColor = item.GetColorSpeak();
-                                Speech.Talk($"{speakColor}‚ª{type}‚Åƒ‰ƒbƒVƒ…Œx‚Å‚·").Forget();
+                                Speech.Talk($"{speakColor}ãŒ{type}ã§ãƒ©ãƒƒã‚·ãƒ¥è­¦å‘Šã§ã™").Forget();
                             }
                         }
                         else if (_aOE2DEDataProcess.GameTime < (60000 * 31))
                         {
-                            // ’é‰¤ƒ‰ƒbƒVƒ…
+                            // å¸ç‹ãƒ©ãƒƒã‚·ãƒ¥
                             var type = "";
-                            if (iut.GetOrDefault(UnitGroupType.WarriorType) > 5) type = "ím";
-                            if (iut.GetOrDefault(UnitGroupType.BowType) > 5) type = "‹|";
-                            if (iut.GetOrDefault(UnitGroupType.HorseType) > 5) type = "”n";
+                            if (iut.GetOrDefault(UnitGroupType.WarriorType) > 5) type = "æˆ¦å£«";
+                            if (iut.GetOrDefault(UnitGroupType.BowType) > 5) type = "å¼“";
+                            if (iut.GetOrDefault(UnitGroupType.HorseType) > 5) type = "é¦¬";
 
                             if (type != "")
                             {
                                 item.AlertRush = true;
                                 var speakColor = item.GetColorSpeak();
-                                Speech.Talk($"{speakColor}‚ª{type}‚Åƒ‰ƒbƒVƒ…Œx‚Å‚·").Forget();
+                                Speech.Talk($"{speakColor}ãŒ{type}ã§ãƒ©ãƒƒã‚·ãƒ¥è­¦å‘Šã§ã™").Forget();
                             }
                         }
                     }
@@ -431,7 +431,7 @@ namespace AOE2DETOOL
 //                        var count = unitInfoItem.ObjectIds.Where((a) => a.Value.Select(_completionTime) < _pythonCall._gameTime).Sum(x => x.Value.Count);
                         count = count < 0 ? 0 : count;
 
-                        // ƒrƒ…[”½‰f
+                        // ãƒ“ãƒ¥ãƒ¼åæ˜ 
                         var pop = 0;
                         var wagon = 0;
                         var fishingBoat = 0;
@@ -439,24 +439,24 @@ namespace AOE2DETOOL
                         {
                             case UnitType.Pop:
                                 pop = count;
-                                // ”_–¯ƒo[
+                                // è¾²æ°‘ãƒãƒ¼
                                 uc1[index].progressBar1.Value =
                                     (int)((pop < 200 ? (float)pop / 200f : 1) * 100);
-                                uc1[index].textPop.Text = pop.ToString();               // ”_–¯
+                                uc1[index].textPop.Text = pop.ToString();               // è¾²æ°‘
                                 break;
                             case UnitType.Wagon:
                                 wagon = count;
-                                // ‰×”nÔƒo[
+                                // è·é¦¬è»Šãƒãƒ¼
                                 uc1[index].progressBar2.Value =
                                     (int)((wagon < 100 ? (float)wagon / 100f : 1) * 100);
-                                uc1[index].textWagon.Text = wagon.ToString();           // ‰×”nÔ
+                                uc1[index].textWagon.Text = wagon.ToString();           // è·é¦¬è»Š
                                 break;
                             case UnitType.FishingBoat:
                                 fishingBoat = count;
-                                // ‹™‘Dƒo[
+                                // æ¼èˆ¹ãƒãƒ¼
                                 uc1[index].progressBar3.Value =
                                     (int)((fishingBoat < 100 ? (float)fishingBoat / 100f : 1) * 100);
-                                uc1[index].textfFshing.Text = fishingBoat.ToString();   // ‹™‘D
+                                uc1[index].textfFshing.Text = fishingBoat.ToString();   // æ¼èˆ¹
                                 break;
                         }
                     }
